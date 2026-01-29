@@ -1,14 +1,10 @@
 services:
   - type: web
-    name: transrv-api
+    name: transrv-metrics-api
     env: docker
     dockerfilePath: ./api/Dockerfile
     dockerContext: ./api
     envVars:
-      - key: PORT
-        sync: false
-      - key: MCP_PORT
-        value: 3001
       - key: DB_HOST
         sync: false
       - key: DB_PORT
@@ -19,13 +15,15 @@ services:
         sync: false
       - key: DB_NAME
         value: transrv
+      - key: MCP_PORT
+        value: 3001
       - key: LLM_PROVIDER
         value: anthropic
       - key: ANTHROPIC_API_KEY
         sync: false
-      - key: ANTHROPIC_MODEL
-        sync: false
       - key: OPENAI_API_KEY
+        sync: false
+      - key: ANTHROPIC_MODEL
         sync: false
       - key: OPENAI_MODEL
         sync: false
