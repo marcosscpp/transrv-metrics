@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "tsc",
+    "build": "npx tsc -p tsconfig.json",
     "start": "node dist/server.js",
     "test": "tsx src/test-tools.ts",
     "test:metrics": "tsx src/test-metrics.ts",

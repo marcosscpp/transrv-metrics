@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "node",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -12,8 +12,10 @@
     "incremental": true,
     "tsBuildInfoFile": "./dist/.tsbuildinfo",
     "isolatedModules": true,
-    "noEmitOnError": false
+    "noEmitOnError": true,
+    "removeComments": true,
+    "sourceMap": false
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "src/test-*.ts"]
 }

@@ -118,7 +118,7 @@ export const langchainTools = [
         ${whereClause}
       `, params)
 
-      return JSON.stringify({ ...result, filters_applied: { start_date, end_date, group_name, alert_type } })
+      return JSON.stringify({ ...(result as Record<string, any>), filters_applied: { start_date, end_date, group_name, alert_type } })
     },
   }),
 
@@ -310,8 +310,8 @@ export const langchainTools = [
       }
 
       return JSON.stringify({
-        period1: { range: `${period1_start} a ${period1_end}`, ...period1 },
-        period2: { range: `${period2_start} a ${period2_end}`, ...period2 },
+        period1: { range: `${period1_start} a ${period1_end}`, ...(period1 as Record<string, any>) },
+        period2: { range: `${period2_start} a ${period2_end}`, ...(period2 as Record<string, any>) },
         variation: {
           total_percent: calcVariation(p1.total, p2.total),
           closed_percent: calcVariation(p1.closed, p2.closed),

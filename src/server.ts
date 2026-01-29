@@ -169,7 +169,7 @@ fastify.post<{ Body: ChatRequest }>('/chat', async (request, reply) => {
   try {
     const sanitizedMessages = sanitizeMessages(messages)
     const llm = createLLM({ provider })
-    const llmWithTools = llm.bindTools(langchainTools)
+    const llmWithTools = llm.bindTools?.(langchainTools) || llm
 
     const langchainMessages: BaseMessage[] = [
       new SystemMessage(getSystemPrompt()),
@@ -191,7 +191,7 @@ fastify.post<{ Body: ChatRequest }>('/chat', async (request, reply) => {
         const tool = langchainTools.find((t) => t.name === toolCall.name)
         if (tool) {
           try {
-            const result = await tool.invoke(toolCall.args)
+            const result = await (tool.invoke as any)(toolCall.args)
             langchainMessages.push(new ToolMessage({
               content: result,
               tool_call_id: toolCall.id || '',
