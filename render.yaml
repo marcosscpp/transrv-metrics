@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: transrv-api
+    env: docker
+    dockerfilePath: ./api/Dockerfile
+    dockerContext: ./api
+    envVars:
+      - key: MCP_PORT
+        value: 3001
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: 3306
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        value: transrv
+      - key: LLM_PROVIDER
+        value: openai
+    healthCheckPath: /health
+
