@@ -3,7 +3,6 @@ services:
     name: transrv-metrics-api
     env: docker
     dockerfilePath: Dockerfile
-    dockerContext: .
     envVars:
       - key: DB_HOST
         sync: false
