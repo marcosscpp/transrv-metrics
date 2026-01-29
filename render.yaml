@@ -5,6 +5,8 @@ services:
     dockerfilePath: ./api/Dockerfile
     dockerContext: ./api
     envVars:
+      - key: PORT
+        sync: false
       - key: MCP_PORT
         value: 3001
       - key: DB_HOST
@@ -18,6 +20,14 @@ services:
       - key: DB_NAME
         value: transrv
       - key: LLM_PROVIDER
-        value: openai
+        value: anthropic
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ANTHROPIC_MODEL
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        sync: false
     healthCheckPath: /health
 
